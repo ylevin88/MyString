@@ -50,6 +50,7 @@ public:
 			otherString - the string to assign
 	*/
 	void Assign(char* otherString);
+	void Assign(MyString& otherString);
 
 	/*
 	to get the char in specific index
@@ -67,6 +68,7 @@ public:
 			otherString - the string to append
 	*/
 	void Append(char* otherString);
+	void Append(MyString& otherString);
 
 	/*
 	compers two strings
@@ -76,6 +78,7 @@ public:
 			otherString - the string to comper to
 	*/
 	bool Compare(char* otherString);
+	bool Compare(MyString& otherString);
 
 	/*
 	checks if the string is empty

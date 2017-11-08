@@ -67,6 +67,12 @@ void MyString::Assign(char* otherString)
 	strcpy(m_curString, otherString);
 }
 
+void MyString::Assign(MyString& otherString)
+{
+	AlocateBuffer(otherString.GetLength() + 1);
+	strcpy(m_curString, otherString.GetString());
+}
+
 
 char MyString::CharAt(unsigned int index)
 {
@@ -85,6 +91,12 @@ void MyString::Append(char* otherString)
 	strcat(m_curString, otherString);
 }
 
+void MyString::Append(MyString& otherString)
+{
+	AlocateBuffer(strlen(m_curString) + otherString.GetLength() + 1, true);
+	strcat(m_curString, otherString.GetString());
+}
+
 
 bool MyString::Compare(char* otherString)
 {
@@ -92,6 +104,19 @@ bool MyString::Compare(char* otherString)
 	if (m_curString != NULL && otherString != NULL)
 	{
 		if (strcmp(m_curString, otherString) == 0)
+		{
+			comareRes = true;
+		}
+	}
+	return comareRes;
+}
+
+bool MyString::Compare(MyString& otherString)
+{
+	bool comareRes = false;
+	if (m_curString != NULL && otherString.GetString() != NULL)
+	{
+		if (strcmp(m_curString, otherString.GetString()) == 0)
 		{
 			comareRes = true;
 		}
